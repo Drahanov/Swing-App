@@ -126,7 +126,7 @@ public class LoginFrame extends javax.swing.JFrame {
         registerInputsPanelLayout.setHorizontalGroup(
             registerInputsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registerInputsPanelLayout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(130, 130, 130)
                 .addGroup(registerInputsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jLabel8)
@@ -138,13 +138,13 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(registerPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(goToLoginButton)
-                        .addComponent(confirmRegisterButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                        .addComponent(confirmRegisterButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         registerInputsPanelLayout.setVerticalGroup(
             registerInputsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registerInputsPanelLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(63, 63, 63)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
@@ -328,6 +328,9 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmLoginButtonActionPerformed
+        JFrame o = new ChiefPanel();
+        o.setVisible(true);
+        dispose();
     }//GEN-LAST:event_confirmLoginButtonActionPerformed
 
     private void goToRegisterButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goToRegisterButtonMousePressed
