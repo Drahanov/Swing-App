@@ -9,6 +9,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,10 +21,16 @@ import javax.swing.SwingUtilities;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
+    public Connect query = new Connect();
 
     public LoginFrame() {
-        initComponents();
+        initComponents();  
         
+        ArrayList data = query.select(new String[]{"name_employees"},
+             "Employees");
+        
+        System.out.println(data.get(1).toString());
+      
    }
     
     @SuppressWarnings("unchecked")
