@@ -14,7 +14,7 @@ public class PositionEntity {
     private String positionName;
 
     public static final int POSITION_ADMIN = 1;
-    public static final int POSITION_SEAMSTRESS = 0;
+    public static final int POSITION_SEAMSTRESS = 2;
     
     public PositionEntity(String positionId, String positionName) {
         this.positionId = positionId;
