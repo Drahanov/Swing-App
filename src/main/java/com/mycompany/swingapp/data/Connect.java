@@ -1,5 +1,5 @@
 
-package com.mycompany.swingapp;
+package com.mycompany.swingapp.data;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.*;
@@ -16,14 +16,7 @@ public class Connect {
             System.out.println(e.getMessage());
         } 
     }
-    /**
-     * Metod, koito stroi standartna SQL SELECT zaqvka
-     * po dadeni masiv ot koloni za kolonite, za koito
-     * iskame da vurne rezultat i ot koq tablica.
-     * @param columnsArray kolonite, za koito iskame danni
-     * @param table tablicata, ot koqto izvikvame danni
-     * @return dinamichen masiv s dannite ot zaqvkata
-     */
+
     public ArrayList<String> select(String[] columnsArray, String table){
         ArrayList data = new ArrayList<String>();
         String columns = String.join(", ", columnsArray);
@@ -46,17 +39,7 @@ public class Connect {
         }
         return data;
     }
-    /**
-     * Metod, koito stroi standartna SQL SELECT WHERE zaqvka
-     * po dadeni masiv ot koloni za kolonite, za koito
-     * iskame da vurne rezultat, ot koq tablica, po koq
-     * kolona da tursi i kakva stoinost.
-     * @param columnsArray kolonite, za koito iskame danni
-     * @param table tablicata, ot koqto izvikvame danni
-     * @param whereColumn v koq kolona da tursi suvpadenie
-     * @param whereValue kakva stoinost da tursi v kolonata
-     * @return dinamichen masiv s dannite ot zaqvkata
-     */
+   
     //select firstname, lastname from employees where city like '%a%'
     public ArrayList<String> selectWhere(String[] columnsArray, String table, String whereColumn, String whereValue){
         ArrayList data = new ArrayList<String>();
@@ -81,20 +64,8 @@ public class Connect {
         }
         return data;
     }
-    /**
-     * Metod, koito stroi SQL SELECT WHERE zaqvka
-     * po dadeni masiv ot koloni za kolonite, za koito
-     * iskame da vurne rezultat, ot koq tablica i po koi
-     * koloni da tursi suvpadenie, kato e neobhodimo samo
-     * ednoto uslovie da e uspylneno.Dannite se podavat
-     * v dva masiva, kato vseki element na ediniq suotvetstva
-     * na elementiq sus sushtiq index ot drugiq.
-     * @param columnsArray kolonite, za koito iskame danni
-     * @param table tablicata, ot koqto izvikvame danni
-     * @param whereColumns po koi koloni da tursi
-     * @param whereValues kakvi stoinosti da tursi
-     * @return dinamichen masiv s dannite ot zaqvkata
-     */
+    
+
     public ArrayList<String> selectWhereOr(String[] columnsArray, String table, String[] whereColumns, String[] whereValues){
         ArrayList data = new ArrayList<String>();
         String columns = String.join(", ", columnsArray);
@@ -123,20 +94,7 @@ public class Connect {
         return data;
     }
     
-    /**
-     * Metod, koito stroi SQL SELECT WHERE zaqvka
-     * po dadeni masiv ot koloni za kolonite, za koito
-     * iskame da vurne rezultat, ot koq tablica i po koi
-     * koloni da tursi suvpadenie, kato e neobhodimo VSICHKI
-     * usloviq da sa uspylneni.Dannite se podavat
-     * v dva masiva, kato vseki element na ediniq suotvetstva
-     * na elementiq sus sushtiq index ot drugiq.
-     * @param columnsArray kolonite, za koito iskame danni
-     * @param table tablicata, ot koqto izvikvame danni
-     * @param whereCols v koi koloni tursi stoinost
-     * @param whereValues kakvi stoinosti da tursi
-     * @return dinamichen masiv s dannite ot zaqvkata
-     */
+
     public ArrayList<String> selectWhereAnd(String[] columnsArray, String table, String[] whereCols, String[] whereValues){
         ArrayList data = new ArrayList<String>();
         String columns = String.join(", ",columnsArray);
@@ -226,12 +184,6 @@ public class Connect {
         return data;
     }
     
-     /**
-     * Metod, koito stroi INSERT zaqvka
-     * @param table v koq tablica da dobavq
-     * @param columnsArray v koi koloni da dobavq
-     * @param valuesArray kakvi danni da dobavq
-     */
     //insert into users (username, password) values ('ime', 'parola')
     public void insert(String table, String[] columnsArray, String[] valuesArray){
         String columns = String.join(", ", columnsArray);
@@ -246,14 +198,7 @@ public class Connect {
             System.out.println(e.getMessage());
         }
     }
-    /**
-     * Metod, koito stroi UPDATE zaqvka
-     * @param table v koq tablica shte promenq danni
-     * @param columnsArray za koi koloni shte promenq danni
-     * @param valuesArray kakvi stoinosti shte promenq
-     * @param whereCol po kakva kolona shte tursi suvpadenie
-     * @param whereVal kakvo syvpadenie shte tursi
-     */
+
     //update employees set fn='ime', ln='familiq', title='titla', city='grad', country='durjava' where employeeid='1'
     public void update(String table, String[] columnsArray, String[] valuesArray, String whereCol, String whereVal){
         String sql = "update "+ table + " set ";
@@ -289,9 +234,7 @@ public class Connect {
             System.out.println(e.getMessage());
         }
     }
-    /**
-     * Zatvarq vruzkata s bazata.
-     */
+
     public void close(){
         try {
             if (conn != null) {

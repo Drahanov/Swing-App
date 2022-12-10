@@ -5,6 +5,8 @@
 
 package com.mycompany.swingapp;
 
+import com.mycompany.swingapp.ui.AuthFrame;
+
 /**
  *
  * @author vadym
@@ -15,7 +17,7 @@ public class SwingApp extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginFrame().setVisible(true);
+                new AuthFrame().setVisible(true);
             }
         });
     }

@@ -2,37 +2,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.swingapp;
+package com.mycompany.swingapp.ui;
 
+import com.mycompany.swingapp.data.LoginResult;
+import com.mycompany.swingapp.data.PositionsRepository;
+import com.mycompany.swingapp.models.EmployeeEntity;
+import com.mycompany.swingapp.models.PositionEntity;
+import com.mycompany.swingapp.data.Connect;
+import com.mycompany.swingapp.data.AuthRepository;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
+import java.awt.Dialog;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-    
+import java.util.Random;
+
 /**
  *
  * @author vadym
  */
-public class LoginFrame extends javax.swing.JFrame {
+public class AuthFrame extends javax.swing.JFrame {
 
-    public Connect query = new Connect();
+    private final Connect query = new Connect();
+    private final AuthRepository authRepository;
+    private final PositionsRepository positionsRepository;
 
-    public LoginFrame() {
-        initComponents();  
-        
-        ArrayList data = query.select(new String[]{"name_employees"},
-             "Employees");
-        
-        System.out.println(data.get(1).toString());
-      
-   }
-    
+    private ArrayList<PositionEntity> positions;
+
+    public AuthFrame() {
+        initComponents();
+        authRepository = new AuthRepository(query);
+        positionsRepository = new PositionsRepository(query);
+        initRegisterPanel();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -47,7 +56,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         goToLoginButton = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        positionsComboBox = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
@@ -121,8 +130,6 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seamstress", "Senior seamstress", "Chief Director"}));
-
         jLabel11.setBackground(new java.awt.Color(204, 204, 204));
         jLabel11.setFont(new java.awt.Font("Apple Braille", 1, 10)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 255));
@@ -142,7 +149,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addGroup(registerInputsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(positionsComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(registerPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(goToLoginButton)
                         .addComponent(confirmRegisterButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -166,7 +173,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(positionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confirmRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -334,11 +341,45 @@ public class LoginFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initRegisterPanel() {
+        registerPanel.setVisible(false);
+
+        positions = positionsRepository.getAllPositions();
+
+        for (int i = 0; i < positions.size(); i++) {
+            positionsComboBox.addItem(positions.get(i).getPositionName());
+        }
+    }
+
     private void confirmLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmLoginButtonActionPerformed
-        JFrame o = new ChiefPanel();
-        o.setVisible(true);
-        dispose();
+
+        LoginResult result = authRepository.loginUser(loginNameTextField.getText(), loginPasswordField.getText());
+
+        switch (result) {
+            case LOGIN_SUCCESSFUL -> {
+                JOptionPane.showMessageDialog(this, "Great success.");
+                EmployeeEntity user = authRepository.getUserModel(loginNameTextField.getText());
+                doNavigation(user.getEmployeePosition());
+            }
+            case LOGIN_INVALID_DATA ->
+                JOptionPane.showMessageDialog(this, "Invalid password or username.");
+            default ->
+                JOptionPane.showMessageDialog(this, "Ooops! Something went wrong, try again.");
+        }
     }//GEN-LAST:event_confirmLoginButtonActionPerformed
+
+    private void doNavigation(int position) {
+        switch (position) {
+            case PositionEntity.POSITION_ADMIN -> {
+                JFrame chiefPanel = new AdminFrame();
+                chiefPanel.setVisible(true);
+                dispose();
+            }
+            case PositionEntity.POSITION_SEAMSTRESS -> {
+                   
+            }
+        }
+    }
 
     private void goToRegisterButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goToRegisterButtonMousePressed
         loginPanel.setVisible(false);
@@ -351,7 +392,12 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_goToLoginButtonMousePressed
 
     private void confirmRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmRegisterButtonActionPerformed
-        // TODO add your handling code here:
+        Random random = new Random();
+        int randomId = random.nextInt();
+        String positionId = PositionEntity.findIdByName(positionsComboBox.getSelectedItem().toString(), positions).getPositionId();
+
+        authRepository.registerUser(new EmployeeEntity(randomId, registerNameTextField.getText(),
+                registerPasswordField.getText(), Integer.parseInt(positionId)));
     }//GEN-LAST:event_confirmRegisterButtonActionPerformed
 
     private void registerPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerPasswordFieldActionPerformed
@@ -361,8 +407,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void registerNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_registerNameTextFieldActionPerformed
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -380,20 +425,21 @@ public class LoginFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginFrame().setVisible(true);
+                new AuthFrame().setVisible(true);
             }
         });
     }
@@ -404,7 +450,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel goToLoginButton;
     private javax.swing.JLabel goToRegisterButton;
     private javax.swing.JPanel inputsPanel;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -419,6 +464,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField loginNameTextField;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPasswordField loginPasswordField;
+    private javax.swing.JComboBox<String> positionsComboBox;
     private javax.swing.JPanel registerInputsPanel;
     private javax.swing.JTextField registerNameTextField;
     private javax.swing.JPanel registerPanel;
@@ -427,4 +473,3 @@ public class LoginFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
-
