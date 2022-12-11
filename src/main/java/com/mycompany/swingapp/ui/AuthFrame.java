@@ -359,7 +359,7 @@ public class AuthFrame extends javax.swing.JFrame {
             case LOGIN_SUCCESSFUL -> {
                 JOptionPane.showMessageDialog(this, "Great success.");
                 EmployeeEntity user = authRepository.getUserModel(loginNameTextField.getText());
-                doNavigation(user.getEmployeePosition());
+                doNavigation(user);
             }
             case LOGIN_INVALID_DATA ->
                 JOptionPane.showMessageDialog(this, "Invalid password or username.");
@@ -368,15 +368,15 @@ public class AuthFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_confirmLoginButtonActionPerformed
 
-    private void doNavigation(int position) {
-        switch (position) {
+    private void doNavigation(EmployeeEntity user) {
+        switch (user.getEmployeePosition()) {
             case PositionEntity.POSITION_ADMIN -> {
                 JFrame chiefPanel = new AdminFrame();
                 chiefPanel.setVisible(true);
                 dispose();
             }
             case PositionEntity.POSITION_SEAMSTRESS -> {
-                JFrame seamsressPanel = new SeamsressFrame();
+                JFrame seamsressPanel = new SeamsressFrame(user);
                 seamsressPanel.setVisible(true);
                 dispose();
             }
