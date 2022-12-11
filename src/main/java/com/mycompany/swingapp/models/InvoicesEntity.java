@@ -21,6 +21,12 @@ public class InvoicesEntity {
         this.status = status;
     }
 
+    public InvoicesEntity(String employeeId, String serviceId, String status) {
+        this.invoiceId = "";
+        this.employeeId = employeeId;
+        this.serviceId = serviceId;
+        this.status = status;
+    }
     
     public String getInvoiceId() {
         return invoiceId;

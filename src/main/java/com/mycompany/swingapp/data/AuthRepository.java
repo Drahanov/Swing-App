@@ -56,4 +56,21 @@ public class AuthRepository {
         String[] row = result.get(0).toString().split("---");
         return new EmployeeEntity(Integer.parseInt(row[0]), row[1], row[2], Integer.parseInt(row[3]));
     }
+
+    public ArrayList<EmployeeEntity> getAllSeamstresses() {
+
+        ArrayList result = query.selectWhere(new String[]{ID_COLUMN, NAME_COLUMN, PASSWORD_COLUMN, POSITION_COLUMN},
+                EMPLOYEES_TABLE, POSITION_COLUMN, "2");
+        ArrayList<EmployeeEntity> parsedResult = new ArrayList();
+        for (int i = 0; i < result.size(); i++) {
+            String[] row = result.get(i).toString().split("---");
+            parsedResult.add(new EmployeeEntity(Integer.parseInt(row[0]), row[1], row[2], Integer.parseInt(row[3])));
+        }
+        return parsedResult;
+    }
+
+    public String getUserNameById(String id) {
+        ArrayList result = query.selectWhere(new String[]{NAME_COLUMN}, EMPLOYEES_TABLE, ID_COLUMN, id);
+        return result.get(0).toString().split("---")[0];
+    }
 }

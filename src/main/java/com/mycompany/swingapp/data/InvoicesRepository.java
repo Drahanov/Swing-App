@@ -1,6 +1,5 @@
 package com.mycompany.swingapp.data;
 
-import com.mycompany.swingapp.data.Connect;
 import java.util.ArrayList;
 import com.mycompany.swingapp.models.InvoicesEntity;
 
@@ -47,8 +46,14 @@ public class InvoicesRepository {
 
         return invoices;
     }
-    
+
     public void updateInvoice(String invoiceId) {
-        query.update(INVOICES_TABLE, new String[]{ID_COLUMN}, new String[]{ "Изпълнено"}, ID_COLUMN, invoiceId);
+        query.update(INVOICES_TABLE, new String[]{ID_COLUMN}, new String[]{"Изпълнено"}, ID_COLUMN, invoiceId);
+    }
+
+    public void addNewInvoice(InvoicesEntity invoice) {
+        query.insert(INVOICES_TABLE, new String[]{ID_EMP_COLUMN,
+            ID_SERVICE_COLUMN, STATUS_COLUMN}, new String[]{ invoice.getEmployeeId(),
+            invoice.getServiceId(), invoice.getStatus()});
     }
 }

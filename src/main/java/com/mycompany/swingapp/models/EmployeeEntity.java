@@ -22,6 +22,14 @@ public class EmployeeEntity {
         this.employeePosition = employeePosition;
     }
 
+    public EmployeeEntity(String employeeName, String employeePassword, int employeePosition) {
+        this.employeeId = 0;
+        this.employeeName = employeeName;
+        this.employeePassword = employeePassword;
+        this.employeePosition = employeePosition;
+    }
+    
+
     public int getEmployeeId() {
         return employeeId;
     }
