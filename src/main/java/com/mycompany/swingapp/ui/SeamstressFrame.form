@@ -57,7 +57,7 @@
                           <Component id="updateStatusButton" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace pref="8" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -141,7 +141,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Seamsress"/>
+                <Property name="text" type="java.lang.String" value="Seamstress"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">

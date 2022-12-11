@@ -48,7 +48,7 @@ public class InvoicesRepository {
     }
 
     public void updateInvoice(String invoiceId) {
-        query.update(INVOICES_TABLE, new String[]{ID_COLUMN}, new String[]{"Изпълнено"}, ID_COLUMN, invoiceId);
+        query.update(INVOICES_TABLE, new String[]{STATUS_COLUMN}, new String[]{"Изпълнено"}, ID_COLUMN, invoiceId);
     }
 
     public void addNewInvoice(InvoicesEntity invoice) {

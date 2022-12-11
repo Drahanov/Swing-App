@@ -85,7 +85,7 @@ public class SeamstressFrame extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Seamsress");
+        jLabel2.setText("Seamstress");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,7 +174,7 @@ public class SeamstressFrame extends javax.swing.JFrame {
                         .addComponent(updateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(updateStatusButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,11 +210,11 @@ public class SeamstressFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MousePressed
 
     private void updateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTableActionPerformed
-       // new UpdateDetailsFrame(invoices, invoicesRepository).show();
+        updateTable();
     }//GEN-LAST:event_updateTableActionPerformed
 
     private void updateStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStatusButtonActionPerformed
-        new UpdateDetailsFrame(invoices, invoicesRepository).show();
+        new UpdateDetailsFrame(invoices, invoicesRepository, servicesRepository).show();
     }//GEN-LAST:event_updateStatusButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
