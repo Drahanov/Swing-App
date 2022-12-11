@@ -374,7 +374,7 @@ public class AuthFrame extends javax.swing.JFrame {
                 dispose();
             }
             case PositionEntity.POSITION_SEAMSTRESS -> {
-                JFrame seamsressPanel = new SeamsressFrame(user);
+                JFrame seamsressPanel = new SeamstressFrame(user);
                 seamsressPanel.setVisible(true);
                 dispose();
             }
