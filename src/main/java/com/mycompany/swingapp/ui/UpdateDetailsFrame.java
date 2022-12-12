@@ -178,37 +178,39 @@ public class UpdateDetailsFrame extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        nothingPanel.setBackground(new java.awt.Color(255, 255, 255));
+        nothingPanel.setBackground(new java.awt.Color(102, 102, 255));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ooops! Nothing found here!");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/vadym/Documents/CourseProjects/Semester5/SwingApp/src/main/java/com/mycompany/swingapp/res/nothing_found_image.jpg")); // NOI18N
-
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Seems like u do not have any orders");
 
         javax.swing.GroupLayout nothingPanelLayout = new javax.swing.GroupLayout(nothingPanel);
         nothingPanel.setLayout(nothingPanelLayout);
         nothingPanelLayout.setHorizontalGroup(
             nothingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nothingPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nothingPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(51, 51, 51))
+            .addGroup(nothingPanelLayout.createSequentialGroup()
                 .addGroup(nothingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nothingPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(51, 51, 51))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nothingPanelLayout.createSequentialGroup()
-                        .addGroup(nothingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(82, 82, 82))))
+                    .addGroup(nothingPanelLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel1))
+                    .addGroup(nothingPanelLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel2)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         nothingPanelLayout.setVerticalGroup(
             nothingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nothingPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(5, 5, 5)
                 .addComponent(jLabel3)
@@ -227,7 +229,7 @@ public class UpdateDetailsFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(nothingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 414, Short.MAX_VALUE))
+                .addComponent(nothingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 418, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
