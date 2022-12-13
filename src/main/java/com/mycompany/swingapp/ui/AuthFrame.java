@@ -181,7 +181,7 @@ public class AuthFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/vadym/Documents/CourseProjects/Semester5/SwingApp/src/main/java/com/mycompany/swingapp/res/login_image.jpeg")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/swingapp/res/login_image.jpeg"))); // NOI18N
 
         javax.swing.GroupLayout registerPanelLayout = new javax.swing.GroupLayout(registerPanel);
         registerPanel.setLayout(registerPanelLayout);
@@ -205,7 +205,7 @@ public class AuthFrame extends javax.swing.JFrame {
         loginPanel.setBackground(new java.awt.Color(255, 255, 255));
         loginPanel.setPreferredSize(new java.awt.Dimension(1031, 476));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/vadym/Documents/CourseProjects/Semester5/SwingApp/src/main/java/com/mycompany/swingapp/res/register_image.jpeg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/swingapp/res/register_image.jpeg"))); // NOI18N
 
         inputsPanel.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -396,6 +396,11 @@ public class AuthFrame extends javax.swing.JFrame {
 
         authRepository.registerUser(new EmployeeEntity(registerNameTextField.getText(),
                 registerPasswordField.getText(), Integer.parseInt(positionId)));
+        
+        JOptionPane.showMessageDialog(this, "Registration confirmed.");
+
+        loginPanel.setVisible(true);
+        registerPanel.setVisible(false);
     }//GEN-LAST:event_confirmRegisterButtonActionPerformed
 
     private void registerPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerPasswordFieldActionPerformed

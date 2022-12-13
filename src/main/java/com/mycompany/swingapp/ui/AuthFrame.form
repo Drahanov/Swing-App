@@ -248,7 +248,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/vadym/Documents/CourseProjects/Semester5/SwingApp/src/main/java/com/mycompany/swingapp/res/login_image.jpeg"/>
+              <Image iconType="3" name="/com/mycompany/swingapp/res/login_image.jpeg"/>
             </Property>
           </Properties>
         </Component>
@@ -293,7 +293,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/vadym/Documents/CourseProjects/Semester5/SwingApp/src/main/java/com/mycompany/swingapp/res/register_image.jpeg"/>
+              <Image iconType="3" name="/com/mycompany/swingapp/res/register_image.jpeg"/>
             </Property>
           </Properties>
         </Component>

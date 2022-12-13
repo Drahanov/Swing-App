@@ -54,6 +54,6 @@ public class InvoicesRepository {
     public void addNewInvoice(InvoicesEntity invoice) {
         query.insert(INVOICES_TABLE, new String[]{ID_EMP_COLUMN,
             ID_SERVICE_COLUMN, STATUS_COLUMN}, new String[]{ invoice.getEmployeeId(),
-            invoice.getServiceId(), invoice.getStatus()});
+            invoice.getServiceId(), invoice.getStatus(  )});
     }
 }

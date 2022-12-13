@@ -42,8 +42,7 @@ public class AuthRepository {
 
     public void registerUser(EmployeeEntity model) {
         query.insert(EMPLOYEES_TABLE, new String[]{
-            ID_COLUMN, NAME_COLUMN, PASSWORD_COLUMN, POSITION_COLUMN}, new String[]{
-            Integer.toString(model.getEmployeeId()),
+            NAME_COLUMN, PASSWORD_COLUMN, POSITION_COLUMN}, new String[]{
             model.getEmployeeName(),
             model.getEmployeePassword(),
             Integer.toString(model.getEmployeePosition())
